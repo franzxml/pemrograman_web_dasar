@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Contoh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .form-container h2 {
+      margin-bottom: 15px;
+      color: #333;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .options {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      margin-right: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Form Pendaftaran</h2>
+    <form>
+      <!-- Input Text -->
+      <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama">
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-group">
+        <label for="alamat">Alamat</label>
+        <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat"></textarea>
+      </div>
+
+      <!-- Radio -->
+      <div class="form-group">
+        <label>Jenis Kelamin</label>
+        <div class="options">
+          <label><input type="radio" name="gender" value="pria"> Pria</label>
+          <label><input type="radio" name="gender" value="wanita"> Wanita</label>
+        </div>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="form-group">
+        <label>Hobi</label>
+        <div class="options">
+          <label><input type="checkbox" name="hobi" value="membaca"> Membaca</label>
+          <label><input type="checkbox" name="hobi" value="olahraga"> Olahraga</label>
+          <label><input type="checkbox" name="hobi" value="musik"> Musik</label>
+        </div>
+      </div>
+
+      <!-- Select Menu -->
+      <div class="form-group">
+        <label for="jurusan">Pilih Jurusan</label>
+        <select id="jurusan" name="jurusan">
+          <option value="">-- Pilih --</option>
+          <option value="informatika">Informatika</option>
+          <option value="sistem_informasi">Sistem Informasi</option>
+          <option value="matematika">Matematika</option>
+          <option value="fisika">Fisika</option>
+        </select>
+      </div>
+
+      <!-- Tombol -->
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+</body>
+</html>

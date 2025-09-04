@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silahkan isi data diri anda!</title>
+  <style>
+    :root {
+      --bg: #f3f6f8;
+      --card: #ffffff;
+      --text: #2e2e2e;
+      --subtext: #666;
+      --line: #dce2e7;
+      --accent: #2f8f5b;
+      --accent-strong: #237c4d;
+      --danger: #d14343;
+      --focus: #4b82f2;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: var(--card);
+      width: 100%;
+      max-width: 560px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(0deg, #ffffff 0%, #f9fbfc 100%);
+    }
+
+    h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    p.subtitle {
+      margin: 0;
+      text-align: center;
+      color: var(--subtext);
+      font-size: 13px;
+    }
+
+    form { padding: 20px 22px 22px; }
+
+    fieldset {
+      margin: 0 0 16px;
+      padding: 14px;
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+    }
+
+    legend {
+      padding: 0 6px;
+      font-weight: bold;
+      color: var(--subtext);
+      font-size: 12px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    @media (min-width: 560px) {
+      .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .form-group { display: grid; gap: 6px; }
+
+    label { font-weight: 600; color: #3a3a3a; font-size: 14px; }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cfd7df;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--focus);
+      box-shadow: 0 0 0 3px rgba(75,130,242,0.15);
+    }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    .inline-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      align-items: center;
+    }
+
+    .inline-options label { font-weight: 500; }
+
+    input[type="radio"], input[type="checkbox"] { margin-right: 6px; }
+
+    small.help { color: var(--subtext); font-size: 12px; }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.02s ease-in;
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    button[type="submit"]:hover { background: var(--accent-strong); }
+
+    button[type="reset"] {
+      background: #eef2f6;
+      color: #1f2a37;
+      border-color: #d0d7e2;
+    }
+
+    button:active { transform: translateY(1px); }
+
+    input:required:invalid,
+    textarea:required:invalid,
+    select:required:invalid { border-color: var(--danger); }
+
+    .note {
+      margin-top: 2px; color: var(--subtext); font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container" role="region" aria-labelledby="judul-form">
+    <header>
+      <h2 id="judul-form">Form Pendaftaran</h2>
+      <p class="subtitle">Silahkan isi data diri anda!</p>
+    </header>
+
+    <form action="#" method="post" novalidate>
+      <fieldset>
+        <legend>Identitas</legend>
+        <div class="grid cols-2">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap <span aria-hidden="true">*</span></label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap"
+                   required minlength="3" autocomplete="name" />
+            <small class="help">Minimal 3 karakter.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="jurusan">Pilih Jurusan <span aria-hidden="true">*</span></label>
+            <select id="jurusan" name="jurusan" required>
+              <option value="" disabled selected>-- Pilih --</option>
+              <option value="informatika">Informatika</option>
+              <option value="sistem_informasi">Sistem Informasi</option>
+              <option value="matematika">Matematika</option>
+              <option value="fisika">Fisika</option>
+            </select>
+            <small class="help">Wajib pilih salah satu.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="alamat">Alamat</label>
+          <textarea id="alamat" name="alamat" rows="3" placeholder="Nama jalan, kelurahan, kecamatan" maxlength="180"></textarea>
+          <div class="note">Maksimal 180 karakter.</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferensi</legend>
+        <div class="grid cols-2">
+          <div class="form-group">
+            <label>Jenis Kelamin <span aria-hidden="true">*</span></label>
+            <div class="inline-options" role="radiogroup" aria-label="Jenis Kelamin">
+              <label><input type="radio" name="gender" value="pria" required> Pria</label>
+              <label><input type="radio" name="gender" value="wanita"> Wanita</label>
+            </div>
+            <small class="help">Pilih salah satu.</small>
+          </div>
+
+          <div class="form-group">
+            <label>Hobi</label>
+            <div class="inline-options">
+              <label><input type="checkbox" name="hobi" value="membaca"> Membaca</label>
+              <label><input type="checkbox" name="hobi" value="olahraga"> Olahraga</label>
+              <label><input type="checkbox" name="hobi" value="musik"> Musik</label>
+            </div>
+            <div class="note">Boleh memilih lebih dari satu.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="reset">Reset</button>
+        <button type="submit">Kirim</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
