@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SISFOKAD Sederhana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- TOPBAR -->
+  <header class="topbar" role="banner">
+    <div class="brand-left">
+      <button id="brand-btn" class="brand" title="Beranda" aria-label="Beranda">
+        <svg class="brand-logo" width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="18" rx="4" fill="#22c55e"/>
+          <path d="M7 9h10M7 13h10" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-text">
+          <div class="brand-title">SISFOKAD</div>
+          <div class="brand-sub">Sistem Informasi Akademik</div>
+        </div>
+      </button>
+    </div>
+
+
+    <div class="topbar-right">
+      <!-- Toggle Tema -->
+      <button id="theme-btn" class="theme-btn" title="Ganti tema" aria-label="Ganti tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 0 1 11.2 3 7.5 7.5 0 1 0 21 12.8z" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+      </button>
+
+
+      <!-- SEARCH: rapat, tombol menutup sisi kanan -->
+      <form id="search-form" class="search" role="search">
+        <input id="global-search" type="search" placeholder="Cari mata kuliah atau kode..." aria-label="Cari mata kuliah">
+        <button id="search-btn" class="search-btn" aria-label="Cari">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </header>
+
+
+  <!-- SHELL -->
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="complementary">
+      <nav aria-label="Menu utama">
+        <ul class="nav">
+          <li><a href="#" class="nav-link active" data-target="beranda">Beranda</a></li>
+          <li><a href="#" class="nav-link" data-target="daftar">Daftar Mata Kuliah</a></li>
+          <li><a href="#" class="nav-link" data-target="tentang">Tentang</a></li>
+                  <li><a href="#" class="nav-link" data-target="grafik">Grafik IPK</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+
+    <main class="main" role="main">
+      <!-- BERANDA: HANYA kartu semester -->
+      <section id="beranda" class="view">
+        <header class="section-head"><h1>Beranda</h1><p class="muted">Pilih semester untuk melihat mata kuliah</p></header>
+        <div class="beranda-wrap">
+          <div id="semester-list" class="semester-list" aria-label="Daftar semester"></div>
+        </div>
+      </section>
+
+
+      <!-- DAFTAR: grid kartu -->
+      <section id="daftar" class="view" style="display:none;">
+        <header class="section-head">
+          <h1>Daftar Mata Kuliah</h1>
+          <p class="muted">Create · Read · Update · Delete</p>
+        </header>
+
+
+        <div class="list-actions">
+          <button id="open-create" class="btn primary">+ Tambah Mata Kuliah</button>
+          <div class="spacer"></div>
+        </div>
+
+
+        <section class="panel list-panel">
+          <div id="mk-container" class="mk-grid" aria-live="polite"></div>
+        </section>
+      </section>
+
+
+
+      <!-- GRAFIK IPK -->
+      <section id="grafik" class="view" style="display:none;">
+        <header class="section-head">
+          <h1>Grafik IPK</h1>
+          <p class="muted">Perkembangan IPK per semester</p>
+        </header>
+        <article class="card">
+          <div class="chart-container">
+            <canvas id="chartIPK" aria-label="Grafik IPK per semester"></canvas>
+          </div>
+        </article>
+      </section>
+    
+      <!-- TENTANG -->
+      <section id="tentang" class="view" style="display:none;">
+        <header class="section-head"><h1>Tentang</h1></header>
+        <article class="card card-muted">
+          <p><strong>SISFOKAD</strong> adalah aplikasi contoh Sistem Informasi Akademik sederhana untuk pembelajaran pemrograman web dasar.</p>
+          <ul class="meta-list">
+            <li><span>Nama</span><strong>Frans Maylandgo Saragih</strong></li>
+            <li><span>NIM</span><strong>H1101241059</strong></li>
+            <li><span>Program Studi</span><strong>Sistem Informasi</strong></li>
+            <li><span>Angkatan</span><strong>2024</strong></li>
+            <li><span>Email</span><strong>@ignfranzx</strong></li>
+                    <li><a href="#" class="nav-link" data-target="grafik">Grafik IPK</a></li>
+        </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+
+  <footer class="footer" role="contentinfo">
+    <p>© 2025 SISFOKAD Sederhana</p>
+  </footer>
+
+
+  <!-- MODAL (create/edit) -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 id="modal-title">Tambah Mata Kuliah</h3>
+      <label for="m-kode">Kode MK</label>
+      <input id="m-kode" type="text" placeholder="IF201">
+      <label for="m-nama">Nama MK</label>
+      <input id="m-nama" type="text" placeholder="Pemrograman Web">
+      <label for="m-sks">SKS</label>
+      <input id="m-sks" type="number" min="1" placeholder="3">
+      <label for="m-sem">Semester</label>
+      <select id="m-sem"></select>
+      <div class="modal-actions">
+        <button id="modal-save" class="btn primary">Simpan</button>
+        <button id="modal-cancel" class="btn">Batal</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
